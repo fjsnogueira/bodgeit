@@ -52,12 +52,12 @@ function decQuantity (prodid) {
 		// Well, apart from checking to see if they've accessed someone elses basket ;)
 		Statement stmt = conn.createStatement();
 		try {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
+			///ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
 			
 			//// FIX SQL Injection
-			////String sql = "SELECT * FROM Baskets WHERE basketid =?");
-                        ////preparedStatement.setString(1, basketId);
-                        ////ResetSet rs = preparedStatement.executeQuery();
+			String sql = "SELECT * FROM Baskets WHERE basketid =?");
+                        preparedStatement.setString(1, basketId);
+                        ResetSet rs = preparedStatement.executeQuery();
 			
 			rs.next();
 			String bUserId = "" + rs.getInt("userid");
