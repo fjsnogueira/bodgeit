@@ -53,6 +53,12 @@ function decQuantity (prodid) {
 		Statement stmt = conn.createStatement();
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Baskets WHERE basketid = " + basketId);
+			
+			//// FIX SQL Injection
+			////String sql = "SELECT * FROM Baskets WHERE basketid =?");
+                        ////preparedStatement.setString(1, basketId);
+                        ////ResetSet rs = preparedStatement.executeQuery();
+			
 			rs.next();
 			String bUserId = "" + rs.getInt("userid");
 			if ((userid == null && ! bUserId.equals("0")) || (userid != null && userid.equals(bUserId))) {
